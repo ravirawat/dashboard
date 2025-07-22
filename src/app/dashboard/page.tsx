@@ -1,3 +1,3 @@
 export default function Page() {
-    return <p>dashBoard</p>
+    return <p>dashBoard demo</p>
 }
