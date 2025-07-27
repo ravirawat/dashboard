@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Issue, IssueStatus } from '../types/issue';
 import { fetchIssues } from '../utils/api';
 import { currentUser } from '../data/user';
-import { toast } from 'react-toastify';
 
 const IssueDetailPage: React.FC = () => {
   const { id } = useParams();
@@ -40,8 +39,6 @@ const IssueDetailPage: React.FC = () => {
     let issues: Issue[] = stored ? JSON.parse(stored) : [];
     issues = issues.map(i => (i.id === updatedIssue.id ? updatedIssue : i));
     localStorage.setItem('issues', JSON.stringify(issues));
-
-    toast.success(`Marked "${issue.title}" as resolved`);
 
     setTimeout(() => {
       navigate('/board', { state: { refresh: true } });
